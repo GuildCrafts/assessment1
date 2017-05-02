@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contacts</title>
+  <%- include head.ejs %>
+</head>
+<body>
+  <div class="page-column">
+    <%- include nav.ejs %>
+
+    <h1>Contacts</h1>
+
+    <div class="contact-list">
+      <% contacts.forEach(function(contact){ %>
+        <div class="contact-list-member">
+          <a class="contact-link" href="/contacts/<%= contact.id %>">
+            <%= contact.first_name %>&nbsp;<%= contact.last_name %>
+          </a>
+          <a class="delete-contact" href="/contacts/<%= contact.id %>/delete">X</a>
+        </div>
+      <% }) %>
+    </div>
+
+  </div>
+
+</body>
+</html>

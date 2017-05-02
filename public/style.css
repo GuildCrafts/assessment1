@@ -1,0 +1,47 @@
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  background-color: darkgrey;
+}
+
+
+nav {
+  background-color: black;
+  color: white;
+  padding: 0.3em 0.5em;
+}
+
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav .search-form {
+  display: inline-block;
+}
+
+nav .search-form input {
+  border-radius: 5px;
+  border: none;
+  padding: 0.3em 0.5em;
+}
+
+
+.page-column {
+  width: 700px;
+  margin: 0 auto;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  /*padding: 1em;*/
+  background-color: white;
+  min-height: 100vh;
+}
+
+.contact-list{
+
+}
+
+.contact-list-member{
+
+}

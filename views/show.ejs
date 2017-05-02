@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= contact.first_name %>&nbsp;<%= contact.last_name %></div></title>
+  <%- include head.ejs %>
+</head>
+<body>
+  <div class="page-column">
+    <%- include nav.ejs %>
+
+    <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></div></h1>
+
+    <dl>
+      <dt>First name</dt>
+      <dd><%= contact.first_name %></dd>
+      <dt>Last name</dt>
+      <dd><%= contact.last_name %></dd>
+    </dl>
+
+    <div><a class="delete-contact" href="/contacts/<%= contact.id %>/delete">delete</a></div>
+
+  </div>
+
+</body>
+</html>
