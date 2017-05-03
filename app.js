@@ -8,10 +8,15 @@ app.set('view engine', 'ejs');
 
 app.use(express.static('public'))
 
+app.use((request, response, next) => {
+  response.locals.query = ''
+  next()
+})
+
 
 app.get('/', (request, response) => {
   database.getContacts(function(contacts){
-    response.render('index', { query: '', contacts })
+    response.render('index', { contacts })
   })
 })
 

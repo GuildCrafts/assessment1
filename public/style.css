@@ -33,15 +33,66 @@ nav .search-form input {
   margin: 0 auto;
   border-left: 1px solid black;
   border-right: 1px solid black;
-  /*padding: 1em;*/
   background-color: white;
   min-height: 100vh;
 }
 
-.contact-list{
+.page-column-content{
+  padding: 1em;
+}
 
+.contact-list{
+  display: flex;
+  flex-direction: column;
 }
 
 .contact-list-member{
+  display: flex;
+  flex-direction: row;
+  padding: 0.2em 0.3em;
+}
+.contact-list-member:hover{
+  background-color: lightgrey;
+}
 
+.contact-list-member a{
+  text-decoration: none;
+}
+.contact-list-member a:hover{
+  text-decoration: underline;
+}
+
+.contact-list-member .contact-link{
+  flex: 1 1 auto;
+
+}
+
+.contact-list-member .delete-contact{
+
+}
+
+.contact-show-page-controls{
+  text-align: right;
+}
+
+.contact-show-details{
+/*  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;*/
+}
+/*
+.contact-show-details > dt, .contact-show-details > dd{
+  margin: 0;
+  width: 50%;
+}
+*/
+
+.contact-show-details > dt {
+  text-decoration: underline;
+  font-weight: bold;
+  margin: 0.25em 0;
+}
+
+.contact-show-details > dd {
+  margin-left: 0.25em;
 }

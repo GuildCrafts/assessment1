@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title><%= contact.first_name %>&nbsp;<%= contact.last_name %></div></title>
-  <%- include head.ejs %>
-</head>
-<body>
-  <div class="page-column">
-    <%- include nav.ejs %>
+<%- include header.ejs %>
 
-    <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></div></h1>
+    <div class="contact-show-page-controls">
+      <a class="delete-contact" href="/contacts/<%= contact.id %>/delete">delete</a>
+    </div>
 
-    <dl>
+    <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></h1>
+
+    <dl class="contact-show-details">
       <dt>First name</dt>
       <dd><%= contact.first_name %></dd>
       <dt>Last name</dt>
       <dd><%= contact.last_name %></dd>
     </dl>
 
-    <div><a class="delete-contact" href="/contacts/<%= contact.id %>/delete">delete</a></div>
 
-  </div>
-
-</body>
-</html>
+<%- include footer.ejs %>
