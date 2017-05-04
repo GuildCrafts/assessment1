@@ -1,17 +1,16 @@
 <%- include header.ejs %>
 
-    <div class="contact-show-page-controls">
-      <a class="delete-contact" href="/contacts/<%= contact.id %>/delete">delete</a>
-    </div>
+  <div class="contact-show-page-controls">
+    <a class="delete-contact" href="/contacts/<%= contact.id %>/delete">delete</a>
+  </div>
 
-    <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></h1>
+  <h1><%= contact.first_name %>&nbsp;<%= contact.last_name %></h1>
 
-    <dl class="contact-show-details">
-      <dt>First name</dt>
-      <dd><%= contact.first_name %></dd>
-      <dt>Last name</dt>
-      <dd><%= contact.last_name %></dd>
-    </dl>
-
+  <dl class="contact-show-details">
+    <dt>First name</dt>
+    <dd><%= contact.first_name %></dd>
+    <dt>Last name</dt>
+    <dd><%= contact.last_name %></dd>
+  </dl>
 
 <%- include footer.ejs %>

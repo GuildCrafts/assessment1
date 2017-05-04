@@ -3,12 +3,38 @@ const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/
 const client = new pg.Client(connectionString)
 client.connect()
 
-const query = function(sql, callback){
-  console.log('QUERY ->', sql.replace(/[\n\s]+/g, ' '))
-  client.query(sql).on('end', function(result){
-    console.log('QUERY <-', JSON.stringify(result.rows))
-    callback(result.rows)
+const query = function(sql, variables, callback){
+  console.log('QUERY ->', sql.replace(/[\n\s]+/g, ' '), variables)
+
+  client.query(sql, variables, function(error, result){
+    if (error){
+      console.log('QUERY <- !!ERROR!!')
+      console.error(error)
+      callback(error)
+    }else{
+      console.log('QUERY <-', JSON.stringify(result.rows))
+      callback(error, result.rows)
+    }
   })
+}
+
+const createContact = function(contact, callback){
+  query(`
+    INSERT INTO
+      contacts (first_name, last_name)
+    VALUES
+      ($1::text, $2::text)
+    RETURNING
+      *
+    `,
+    [
+      contact.first_name,
+      contact.last_name,
+    ],
+    function(error, results){
+      callback(error, results ? results[0] : null)
+    }
+  )
 }
 
 const getContacts = function(callback){
@@ -17,15 +43,18 @@ const getContacts = function(callback){
       *
     FROM
       contacts
-  `, callback)
+  `, [], callback)
 }
 
 const getContact = function(contactId, callback){
   query(`
-    SELECT * FROM contacts WHERE id=${contactId} LIMIT 1
-  `, function(results){
-    callback(results[0])
-  })
+    SELECT * FROM contacts WHERE id=$1::int LIMIT 1
+    `,
+    [contactId],
+    function(error, results){
+      callback(error, results ? results[0] : null)
+    }
+  )
 }
 
 const deleteContact = function(contactId, callback){
@@ -33,23 +62,29 @@ const deleteContact = function(contactId, callback){
     DELETE FROM
       contacts
     WHERE
-      id=${contactId}
-  `, callback)
+      id=$1::int
+    `,
+    [contactId],
+    callback
+  )
 }
 
 const searchForContact = function(searchQuery, callback){
-  searchQuery = `%${searchQuery.toLowerCase().replace(/\s+/,'%')}%`
   query(`
     SELECT
       *
     FROM
       contacts
     WHERE
-      lower(first_name || ' ' || last_name) LIKE '${searchQuery}'
-  `, callback)
+      lower(first_name || ' ' || last_name) LIKE $1::text
+    `,
+    [`%${searchQuery.toLowerCase().replace(/\s+/,'%')}%`],
+    callback
+  )
 }
 
 module.exports = {
+  createContact,
   getContacts,
   getContact,
   deleteContact,
