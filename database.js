@@ -4,9 +4,9 @@ const client = new pg.Client(connectionString)
 client.connect()
 
 const query = function(sql, callback){
-  console.log('QUERY -> ', sql)
+  console.log('QUERY ->', sql.replace(/[\n\s]+/g, ' '))
   client.query(sql).on('end', function(result){
-    console.log('QUERY <- ', result.rows)
+    console.log('QUERY <-', JSON.stringify(result.rows))
     callback(result.rows)
   })
 }
