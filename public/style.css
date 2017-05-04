@@ -74,39 +74,11 @@ nav .search-form input {
 
 .contact-list-member .contact-link{
   flex: 1 1 auto;
-
-}
-
-.contact-list-member .delete-contact{
-
 }
 
 .contact-show-page-controls{
   text-align: right;
 }
-
-.contact-show-details{
-/*  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;*/
-}
-/*
-.contact-show-details > dt, .contact-show-details > dd{
-  margin: 0;
-  width: 50%;
-}
-*/
-
-.contact-show-details > dt {
-  text-decoration: underline;
-  font-weight: bold;
-  margin: 0.25em 0;
-}
-
-.contact-show-details > dd {
-  margin-left: 0.25em;
-}
-
 
 .new-contact-form label {
   display: block;
@@ -120,4 +92,9 @@ nav .search-form input {
 
 .new-contact-form input[type="submit"] {
   margin-top: 1em;
+}
+
+.new-contact-form-errors {
+  color: red;
+  font-weight: bold;
 }
