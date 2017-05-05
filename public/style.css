@@ -75,18 +75,6 @@ nav .search-form input {
   text-align: right;
 }
 
-.contact-show-details{
-/*  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;*/
-}
-/*
-.contact-show-details > dt, .contact-show-details > dd{
-  margin: 0;
-  width: 50%;
-}
-*/
-
 .contact-show-details > dt {
   text-decoration: underline;
   font-weight: bold;
