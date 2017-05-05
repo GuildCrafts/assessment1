@@ -7,15 +7,9 @@
 </head>
 <body>
 
-  <h1>Contacts</h1>
-
-  <div class="contact-list">
-    <% contacts.forEach(function(contact){ %>
-      <div>
-        <%= contact.name %>
-      </div>
-    <% }) %>
-  </div>
+  <h1>ERROR</h1>
+  <h2><%= error.message %></h2>
+  <pre><%= error.stack %></pre>
 
 </body>
 </html>

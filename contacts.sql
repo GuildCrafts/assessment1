@@ -1,7 +1,7 @@
 INSERT INTO
-  contacts (first_name, last_name)
+  contacts (name)
 VALUES
-  ('Jared', 'Grippe'),
-  ('Tanner', 'Welsh'),
-  ('NeEddra', 'James')
+  ('Jared Grippe'),
+  ('Tanner Welsh'),
+  ('NeEddra James')
 ;

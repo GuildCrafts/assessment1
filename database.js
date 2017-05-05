@@ -18,25 +18,6 @@ const query = function(sql, variables, callback){
   })
 }
 
-const createContact = function(contact, callback){
-  query(`
-    INSERT INTO
-      contacts (first_name, last_name)
-    VALUES
-      ($1::text, $2::text)
-    RETURNING
-      *
-    `,
-    [
-      contact.first_name,
-      contact.last_name,
-    ],
-    function(error, results){
-      callback(error, results ? results[0] : null)
-    }
-  )
-}
-
 const getContacts = function(callback){
   query(`
     SELECT
@@ -46,47 +27,6 @@ const getContacts = function(callback){
   `, [], callback)
 }
 
-const getContact = function(contactId, callback){
-  query(`
-    SELECT * FROM contacts WHERE id=$1::int LIMIT 1
-    `,
-    [contactId],
-    function(error, results){
-      callback(error, results ? results[0] : null)
-    }
-  )
-}
-
-const deleteContact = function(contactId, callback){
-  query(`
-    DELETE FROM
-      contacts
-    WHERE
-      id=$1::int
-    `,
-    [contactId],
-    callback
-  )
-}
-
-const searchForContact = function(searchQuery, callback){
-  query(`
-    SELECT
-      *
-    FROM
-      contacts
-    WHERE
-      lower(first_name || ' ' || last_name) LIKE $1::text
-    `,
-    [`%${searchQuery.toLowerCase().replace(/\s+/,'%')}%`],
-    callback
-  )
-}
-
 module.exports = {
-  createContact,
   getContacts,
-  getContact,
-  deleteContact,
-  searchForContact,
 }
