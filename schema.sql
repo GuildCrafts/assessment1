@@ -1,3 +1,7 @@
+CREATE DATABASE IF EXISTS contacts;
+
+\c contacts;
+
 DROP TABLE IF EXISTS contacts;
 
 CREATE TABLE contacts (

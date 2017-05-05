@@ -1,7 +1,7 @@
-const pg = require('pg')
-const connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/contacts'
-const client = new pg.Client(connectionString)
-client.connect()
+const knex = require('knex')({
+  client: 'pg',
+  connection: process.env.DATABASE_URL || 'postgres://localhost:5432/contacts'
+});
 
 const query = function(sql, callback){
   console.log('QUERY -> ', sql)
@@ -11,42 +11,30 @@ const query = function(sql, callback){
   })
 }
 
-const getContacts = function(callback){
-  query(`
-    SELECT
-      *
-    FROM
-      contacts
-  `, callback)
+const getContacts = function(callback) {
+  knex('contacts').then(function(rows){
+    callback(rows)
+  })
 }
 
 const getContact = function(contactId, callback){
-  query(`
-    SELECT * FROM contacts WHERE id=${contactId} LIMIT 1
-  `, function(results){
-    callback(results[0])
+  knex('contacts').where('id', contactId).then(function(row) {
+    callback(row[0])
   })
 }
 
 const deleteContact = function(contactId, callback){
-  query(`
-    DELETE FROM
-      contacts
-    WHERE
-      id=${contactId}
-  `, callback)
+  knex('contacts').where('id', contactId).del().then(function(row) {
+    callback(row)
+  })
 }
 
 const searchForContact = function(searchQuery, callback){
-  searchQuery = `%${searchQuery.toLowerCase().replace(/\s+/,'%')}%`
-  query(`
-    SELECT
-      *
-    FROM
-      contacts
-    WHERE
-      lower(first_name || ' ' || last_name) LIKE '${searchQuery}'
-  `, callback)
+  q = '%'+searchQuery.toLowerCase().replace(/\s+/,'%')+'%'
+  knex('contacts').whereRaw(`LOWER(first_name || last_name) LIKE ?`, [`%${q}%`])
+  .then(function(rows) {
+    callback(rows)
+  })
 }
 
 module.exports = {

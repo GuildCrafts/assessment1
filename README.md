@@ -11,3 +11,9 @@
 - needs some front end behavioral foo (show/hide menu, additional details)
 - feature idea: embed a google maps at the person’s address?
 - show, create, and delete contacts
+
+## To get this project running
+1. `npm install`
+1. `npm run load_schema` to create your `contacts` db and `contacts` table
+1. `npm run load_contacts` to load 3 contacts into your `contacts` table
+1. `npm start` to run (or `npm run start:dev` for `nodemon`)
