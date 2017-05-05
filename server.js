@@ -10,12 +10,12 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', (request, response) => {
-  database.getContacts(function(error, contacts){
-    if (error){
+  database.getContacts((error, contacts) => {
+    if (error) {
       response.status(500).render('error', {
         error: error,
       })
-    }else{
+    } else {
       response.render('index', {
         contacts: contacts,
       })
@@ -29,5 +29,5 @@ app.use((request, response) => {
 
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-  console.log(`http://localhost:${port}`)
+  console.log(`Listening on http://localhost:${port}...`)
 })
