@@ -1,13 +1,5 @@
-# Assessment 1
+# Week 5 Assessment: Contacts App
 
+The learner-facing version of the starter code is accessible via this ZIP file: https://drive.google.com/file/d/0B77MaJi8kPm1Zi1sNzhRb2poZ28/view.
 
-## notes for the project
-
-- pre-build express app and PG connection
-- provide dummy data (one set with only a few columns, a later set with all columns)
-- they have to build all the views, with list/detail for contacts
-- also update the schema to add columns
-- stretch: extract more tables (mult. addresses, phone no.s)
-- needs some front end behavioral foo (show/hide menu, additional details)
-- feature idea: embed a google maps at the person’s address?
-- show, create, and delete contacts
+An example completed version of this app is visible on the master branch.
