@@ -1,16 +1,19 @@
 <%- include header.ejs %>
 
-  <h1>Contacts</h1>
-
-  <div class="contact-list">
-    <% contacts.forEach(function(contact){ %>
-      <div class="contact-list-member">
-        <a class="contact-link" href="/contacts/<%= contact.id %>">
-          <%= contact.first_name %>&nbsp;<%= contact.last_name %>
-        </a>
-        <a class="delete-contact" href="/contacts/<%= contact.id %>/delete">X</a>
-      </div>
-    <% }) %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Contacts</div>
+    <ul class="list-group">
+      <% contacts.forEach(function(contact){ %>
+        <li class="list-group-item">
+          <a class="btn btn-default" href="/contacts/<%= contact.id %>/delete">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </a>
+          <a href="/contacts/<%= contact.id %>">
+            <%= contact.first_name %>&nbsp;<%= contact.last_name %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
   </div>
 
 <%- include footer.ejs %>

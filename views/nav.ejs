@@ -1,7 +1,9 @@
-<nav>
-  <a href="/">Home</a>
-  <form method="get" action="/search" class="search-form">
-    <input name="q" type="search" placeholder="search" value="<%= query %>" autofocus/>
-    <input type="submit" style="display: none" />
+<nav class="navbar navbar-default">
+  <a class="navbar-brand" href="/">Home</a>
+  <form class="navbar-form navbar-left" method="get" action="/search">
+    <div class="form-group">
+      <input class="form-control" name="q" type="search" placeholder="search" value="<%= query %>" />
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
   </form>
 </nav>
